@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import routes from '../config/routes';
 import AppRoutes from '../HOCs/AppRoutes';
-import '../assets/styles/app.css';
+import '../assets/styles/app.scss';
 
 const App = () => (
     <BrowserRouter>
