@@ -1,6 +1,6 @@
 import { MdKeyboardBackspace } from "react-icons/md";
 import { useHistory } from "react-router-dom";
-import { USERS_ROUTE } from "../../constants";
+import { CREATE_USER_ROUTE, USERS_ROUTE } from "../../constants";
 import ActionButton from "./ActionButton";
 
 /**
@@ -14,7 +14,10 @@ const ContentTitle = ({ title }) => {
         return (
             <>
                 <h4>{title}</h4>
-                <ActionButton text="+ Create User" />
+                <ActionButton
+                    text="+ Create User"
+                    onClick={() => history.push(CREATE_USER_ROUTE)}
+                />
             </>
         )
     }
