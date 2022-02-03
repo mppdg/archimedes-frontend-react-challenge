@@ -1,4 +1,5 @@
 import { MdKeyboardBackspace } from "react-icons/md";
+import { useHistory } from "react-router-dom";
 import ContentCard from "../common/ContentCard";
 import UserForm from "../common/UserForm";
 
@@ -8,7 +9,11 @@ import UserForm from "../common/UserForm";
  */
 const UpdateUser = () => {
 
-    const title = <span><MdKeyboardBackspace /> <strong>Update User</strong></span>
+    const history = useHistory();
+
+    const handleClick = () => history.push('/users')
+
+    const title = <span><span onClick={}><MdKeyboardBackspace /></span> <strong>Update User</strong></span>
     const content = <UserForm actionText="Update User" />
     
       return (
