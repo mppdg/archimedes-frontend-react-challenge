@@ -1,14 +1,13 @@
 import ContentCard from "../common/ContentCard";
-import ActionButton from "../common/ActionButton";
+import ContentTitle from "../common/ContentTitle";
 
 const Users = () => {
-  const title = <><h4>Users</h4><ActionButton text="+ Create User" /></>
-
-  const content = "User table"
-  
     return (
-      <ContentCard content={content} title={title} />
-    );
+        <ContentCard 
+            title={<ContentTitle title="Users" />}
+            content="User Table"
+        />
+      );
   };
   
   export default Users;
