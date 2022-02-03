@@ -1,5 +1,6 @@
-import ContentCard from "../common/ContentCard";
 import { MdKeyboardBackspace } from "react-icons/md";
+import ContentCard from "../common/ContentCard";
+import UserForm from "../common/UserForm";
 
 /**
  * UpdateUser
@@ -8,7 +9,7 @@ import { MdKeyboardBackspace } from "react-icons/md";
 const UpdateUser = () => {
 
     const title = <span><MdKeyboardBackspace /> <strong>Update User</strong></span>
-    const content = "The user form"
+    const content = <UserForm actionText="Update User" />
     
       return (
         <ContentCard content={content} title={title} />
