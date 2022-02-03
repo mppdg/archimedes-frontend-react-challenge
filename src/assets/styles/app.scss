@@ -65,3 +65,17 @@
         box-shadow: 0 2px 8px #EAEAEA;
     }
 }
+
+.btn-primary {
+    background-color: #00B8C5;
+    box-shadow: 0 2px 8px #EAEAEA;
+    border: none;
+    padding: 10px;
+    color:#FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #02c8d6;
+    }
+}
