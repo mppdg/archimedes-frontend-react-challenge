@@ -1,7 +1,8 @@
 import ContentCard from "../common/ContentCard";
+import ActionButton from "../common/ActionButton";
 
 const Users = () => {
-  const title = <><h4>Users</h4>+ Create User</>
+  const title = <><h4>Users</h4><ActionButton text="+ Create User" /></>
 
   const content = "User table"
   
