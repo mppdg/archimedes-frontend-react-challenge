@@ -1,11 +1,23 @@
+import React from 'react';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import routes from '../config/routes';
+import AppRoutes from '../HOCs/AppRoutes';
 import '../assets/styles/app.css';
 
-const App = () => {
-    return (
-        <div id="app-layout">
-           App Layout
-        </div>
-    );
-};
+const App = () => (
+    <BrowserRouter>
+      <Switch>
+        {routes.map((route, index) => (
+          <AppRoutes
+            key={`app-${index}`}
+            exact={route.exact}
+            path={route.path}
+            component={route.component}
+          />
+        ))}
+      </Switch>
+    </BrowserRouter>
+);
 
 export default App;
+
