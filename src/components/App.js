@@ -4,11 +4,13 @@ import routes from '../config/routes';
 import AppRoutes from '../HOCs/AppRoutes';
 import '../assets/styles/app.scss';
 import { AppProvider } from '../context/AppContext';
+import SpinnerLoader from './common/SpinLoader';
 
 const displayInit = { success: true, message: "" };
 
 const App = () => {
   const [display, setDisplay] = useState(displayInit);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!display.message) return;
@@ -16,7 +18,7 @@ const App = () => {
   }, [display])
 
   return (
-    <AppProvider value={{ display, setDisplay }}>
+    <AppProvider value={{ display, loading,  setDisplay, setLoading }}>
     <BrowserRouter>
       <Switch>
         {routes.map((route, index) => (

@@ -8,15 +8,18 @@ const cols = ['Name', 'Email', 'Role', 'Actions']
 
 const UsersTable = ({ rows = [], columns = cols, reLoadData }) => {
     const history = useHistory();
-    const { setDisplay } = useAppContext();
+    const { setDisplay, setLoading } = useAppContext();
 
     const handleDelete = (userId) => async (e) => {
         e.stopPropagation();
         try {
+            setLoading(true);
             const res = await axios.delete(`${USERS_API}${userId}`);
+            setLoading(false);
             setDisplay(res.data);
             if (reLoadData) reLoadData();
         } catch (error) {
+            setLoading(false);
             setDisplay({ message: "An error occured. Check and try again!" });
         }
     }

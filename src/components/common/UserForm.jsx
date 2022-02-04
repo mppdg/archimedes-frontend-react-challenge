@@ -12,7 +12,7 @@ const UserForm = ({ actionText, data = initUser }) => {
     const [error, setError] = useState({});
 
     const history = useHistory();
-    const { setDisplay } = useAppContext();
+    const { setDisplay, setLoading } = useAppContext();
 
     const handleChange = (e) => {
         setUser({
@@ -28,16 +28,18 @@ const UserForm = ({ actionText, data = initUser }) => {
 
         let res;
         try {
+            setLoading(true);
             if (user.id) {
                 res = await axios.put(`${USERS_API}${user.id}`, { user });
             } else {
                 res = await axios.post(USERS_API, { user });
             }
             setDisplay(res.data);
-            
+            setLoading(false);
             history.push(USERS_ROUTE);
 
         } catch (err) {
+            setLoading(false);
             if(err.response && err.response.data) setError(err.response.data);
             setDisplay({ message: "An error occured. Check and try again!" });
         }

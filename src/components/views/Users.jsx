@@ -8,13 +8,16 @@ import { useAppContext } from "../../context/AppContext";
 
 const Users = () => {
     const [users, setUsers] = useState([]);
-    const { setDisplay } = useAppContext();
+    const { setDisplay, setLoading } = useAppContext();
 
     const fetchUsers = async () => {
         try {
+            setLoading(true);
             const res = await axios.get(USERS_API);
             setUsers(res.data.users);
+            setLoading(false);
         } catch (error) {
+            setLoading(false);
             setDisplay({ message: "An error occured. Check and try again!" });
         }
     }
