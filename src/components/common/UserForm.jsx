@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { USERS_API, USERS_ROUTE } from "../../constants";
 import ActionButton from "./ActionButton";
+import { useAppContext } from "../../context/AppContext";
 
 const initUser = { name: "", email: "", role: "" };
 
@@ -11,6 +12,7 @@ const UserForm = ({ actionText, data = initUser }) => {
     const [error, setError] = useState({});
 
     const history = useHistory();
+    const { setDisplay } = useAppContext();
 
     const handleChange = (e) => {
         setUser({
@@ -31,7 +33,8 @@ const UserForm = ({ actionText, data = initUser }) => {
             } else {
                 res = await axios.post(USERS_API, { user });
             }
-
+            setDisplay(res.data);
+            
             history.push(USERS_ROUTE);
 
         } catch (err) {

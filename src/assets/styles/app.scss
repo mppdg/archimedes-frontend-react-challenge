@@ -26,17 +26,33 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 30px 20px;
+        padding: 20px;
         flex: 1;
+        position: relative;
     }
 
 }
+
+.display-success, .display-error {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #06b423;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.display-error {
+    color: #f35252;
+}
+
 
 .content-card {
     max-width: 800px;
     min-width: 400px;
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 
     &-title {
         width: 100%;
@@ -47,6 +63,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 15px;
 
         & > span {
             display: flex;

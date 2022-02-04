@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Switch } from 'react-router-dom';
-import axios from 'axios';
 import routes from '../config/routes';
 import AppRoutes from '../HOCs/AppRoutes';
 import '../assets/styles/app.scss';
+import { AppProvider } from '../context/AppContext';
 
-axios.defaults.headers.common["Content-Type"] = "application/json";
-axios.defaults.headers.common["Accept"] = "application/json";
+const displayInit = { success: true, message: "" };
 
-const App = () => (
+const App = () => {
+  const [display, setDisplay] = useState(displayInit);
+
+  useEffect(() => {
+    if (!display.message) return;
+    setTimeout(() => setDisplay(displayInit), 4000);
+  }, [display])
+
+  return (
+    <AppProvider value={{ display, setDisplay }}>
     <BrowserRouter>
       <Switch>
         {routes.map((route, index) => (
@@ -21,7 +29,8 @@ const App = () => (
         ))}
       </Switch>
     </BrowserRouter>
-);
+  </AppProvider>
+)}
 
 export default App;
 
