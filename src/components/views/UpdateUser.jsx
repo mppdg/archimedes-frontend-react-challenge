@@ -13,7 +13,6 @@ import UserForm from "../common/UserForm";
 const UpdateUser = () => {
     const {state} = useLocation();
     const history = useHistory();
-    // console.log('location', location)
 
     useEffect(() => {
         if (!state?.user) history.push(CREATE_USER_ROUTE);
