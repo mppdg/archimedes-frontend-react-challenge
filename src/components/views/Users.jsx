@@ -8,22 +8,24 @@ import { USERS_API } from "../../constants";
 const Users = () => {
     const [users, setUsers] = useState([]);
 
+    const fetchUsers = async () => {
+        try {
+            const  res = await axios.get(USERS_API);
+              setUsers(res.data.users);
+          } catch (error) {
+              
+          }
+    }
+
     useEffect(() => {
-        (async () => {
-            try {
-              const  res = await axios.get(USERS_API);
-                setUsers(res.data.users);
-            } catch (error) {
-                
-            }
-        })()
+        fetchUsers();
     }, [])
 
 
     return (
         <ContentCard 
             title={<ContentTitle title="Users" />}
-            content={<UsersTable rows={users} />}
+            content={<UsersTable rows={users} reLoadData={fetchUsers} />}
         />
       );
   };
