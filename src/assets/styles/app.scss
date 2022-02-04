@@ -148,6 +148,8 @@
 
     tr {
         border-bottom: 1px solid #EEEEEE;
+        cursor: pointer;
+        
 
         &:hover {
             background-color: #FAFAFA;
@@ -160,5 +162,10 @@
 
     th {
         text-align: left;
+    }
+
+    .col-actions {
+        text-align: center;
+        cursor: pointer;
     }
 }

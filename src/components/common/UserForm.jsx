@@ -27,7 +27,7 @@ const UserForm = ({ actionText, data = initUser }) => {
         let res;
         try {
             if (user.id) {
-                res = await axios.put(`${USERS_API}/${user.id}`, { user });
+                res = await axios.put(`${USERS_API}${user.id}`, { user });
             } else {
                 res = await axios.post(USERS_API, { user });
             }
