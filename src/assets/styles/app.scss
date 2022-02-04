@@ -128,4 +128,15 @@
         border-radius: 4px;
         resize: vertical;
       }
+
+      .form-error, .form-error-top {
+          font-size: 11px;
+          color:#f35252
+      }
+
+      .form-error-top {
+          text-align: center;
+      }
+
+
 }
