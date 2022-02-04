@@ -38,16 +38,13 @@ const UserForm = ({ actionText, data = initUser }) => {
             history.push(USERS_ROUTE);
 
         } catch (err) {
-            if(err.response && err.response.data) return  setError(err.response.data);
-            setError({message: "Something went wrong!"});
+            if(err.response && err.response.data) setError(err.response.data);
+            setDisplay({ message: "An error occured. Check and try again!" });
         }
     }
 
     return (
         <form className="user-form">
-            <div className="form-group">
-                <span className="form-error-top">{error.message || error.detail}</span>
-            </div>
             <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" value={user.name} placeholder="Your name" onChange={handleChange} />

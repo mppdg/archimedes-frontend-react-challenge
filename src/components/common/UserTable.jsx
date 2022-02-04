@@ -2,19 +2,22 @@ import axios from "axios";
 import { MdDeleteOutline } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { UPDATE_USER_ROUTE, USERS_API } from "../../constants";
+import { useAppContext } from "../../context/AppContext";
 
 const cols = ['Name', 'Email', 'Role', 'Actions']
 
 const UsersTable = ({ rows = [], columns = cols, reLoadData }) => {
     const history = useHistory();
+    const { setDisplay } = useAppContext();
 
     const handleDelete = (userId) => async (e) => {
         e.stopPropagation();
         try {
-            await axios.delete(`${USERS_API}${userId}`);
+            const res = await axios.delete(`${USERS_API}${userId}`);
+            setDisplay(res.data);
             if (reLoadData) reLoadData();
         } catch (error) {
-            
+            setDisplay({ message: "An error occured. Check and try again!" });
         }
     }
 
@@ -33,7 +36,9 @@ const UsersTable = ({ rows = [], columns = cols, reLoadData }) => {
                         <td>{user.name}</td>
                         <td>{user.email}</td>
                         <td>{user.role}</td>
-                        <td className="col-actions" onClick={(e)=> e.stopPropagation()}>{<MdDeleteOutline onClick={handleDelete(user.id)} />}</td>
+                        <td className="col-actions" onClick={(e) => e.stopPropagation()}>
+                            {<MdDeleteOutline onClick={handleDelete(user.id)} />}
+                        </td>
                     </tr>
                 ))}
             </tbody>
