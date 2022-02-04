@@ -137,6 +137,28 @@
       .form-error-top {
           text-align: center;
       }
+}
 
+.users-table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid #EEEEEE;
 
+    tr {
+        border-bottom: 1px solid #EEEEEE;
+
+        &:hover {
+            background-color: #FAFAFA;
+        }
+    }
+
+    td, th {
+        padding: 15px 20px;
+    }
+
+    th {
+        text-align: left;
+    }
 }
