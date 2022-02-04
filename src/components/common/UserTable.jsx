@@ -22,6 +22,7 @@ const UsersTable = ({ rows = [], columns = cols, reLoadData }) => {
     }
 
     return (
+        <div className="users-table-wrapper">
         <table className="users-table">
             <thead>
                 <tr>
@@ -43,6 +44,7 @@ const UsersTable = ({ rows = [], columns = cols, reLoadData }) => {
                 ))}
             </tbody>
         </table>
+        </div>
     );
 };
 
